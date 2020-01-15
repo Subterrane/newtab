@@ -11,11 +11,6 @@ Custom browser "new tab" page
 
 [Clone or Download](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) to a folder on your computer and update your browser settings. See below for an example in Safari.
 
-## Useage
-
-- Press `a` to add a link
-- Press `d` to delete a link
-
 ## TODO
 
 - set timezone

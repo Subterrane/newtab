@@ -28,38 +28,28 @@ const displayLinks = () => {
 
 displayLinks();
 
-const helpText = `a - add link\nd - delete link`;
+document.getElementById("add").addEventListener("click", () => {
+  try {
+    const links = getLinks();
+    const new_url = prompt("New Link URL");
+    const url = new URL(new_url).href;
+    if (url) links.push(url);
+    setLinks(links);
+    displayLinks();
+  } catch (_err) {}
+});
 
-document.addEventListener("keypress", keyEvent => {
+document.getElementById("remove").addEventListener("click", () => {
   const links = getLinks();
-
-  switch (keyEvent.key) {
-    case "a":
-      try {
-        const new_url = prompt("New Link URL");
-        const url = new URL(new_url).href;
-        if (url) links.push(url);
-        setLinks(links);
-        displayLinks();
-      } catch (_err) {}
-      break;
-    case "d":
-      const list = links.reduce((acc, cur, idx) => {
-        acc += `${idx} - ${cur}\n`;
-        return acc;
-      }, "Delete URL:\n");
-      const rem_idx = parseInt(prompt(list));
-      const new_links = getLinks().reduce((acc, cur, idx) => {
-        if (idx !== rem_idx) acc.push(cur);
-        return acc;
-      }, []);
-      setLinks(new_links);
-      displayLinks();
-      break;
-    case "?":
-      alert(helpText);
-      break;
-    default:
-      console.log("unknown key");
-  }
+  const list = links.reduce((acc, cur, idx) => {
+    acc += `${idx} - ${cur}\n`;
+    return acc;
+  }, "Delete URL:\n");
+  const rem_idx = parseInt(prompt(list));
+  const new_links = getLinks().reduce((acc, cur, idx) => {
+    if (idx !== rem_idx) acc.push(cur);
+    return acc;
+  }, []);
+  setLinks(new_links);
+  displayLinks();
 });
