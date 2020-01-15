@@ -34,6 +34,12 @@ body {
   font-size: 4em;
   line-height: 3.5rem;
 }
+#time_zone {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-weight: lighter;
+}
 .links {
   position: fixed;
   top: 10%;
@@ -60,11 +66,12 @@ body {
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
-.link_control {
+.control {
   display: inline-block;
   position: relative;
   width: 20px;
   height: 20px;
+  line-height: 18px;
   background-color: rgb(255, 255, 255);
   text-decoration: none;
   color: black;
@@ -72,7 +79,8 @@ body {
   text-align: center;
   font-family: Helvetica, sans-serif;
   font-weight: bold;
-  line-height: 20px;
+  font-size: 14px;
+  vertical-align: middle;
   opacity: 0.4;
   cursor: pointer;
 }
