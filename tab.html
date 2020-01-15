@@ -5,127 +5,15 @@
       href="https://fonts.googleapis.com/css?family=Gruppo"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: Gruppo, Helvetica, sans-serif;
-      }
-      .fullscreen {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-      #background {
-        background-size: cover;
-        background-color: white;
-        transition: opacity 500ms ease-in;
-        opacity: 0;
-      }
-      #background_opacity {
-        background: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0.5),
-          transparent,
-          transparent
-        );
-      }
-      #time {
-        display: block;
-        padding: 5%;
-        width: 50px;
-        color: #fff;
-        font-size: 4em;
-        line-height: 3.5rem;
-      }
-      #links {
-        position: fixed;
-        top: 10%;
-        left: 60%;
-      }
-      .link {
-        display: inline-block;
-        position: relative;
-        width: 50px;
-        height: 50px;
-        background-color: rgba(255, 255, 255, 0.85);
-        text-decoration: none;
-        color: black;
-        border-radius: 5px;
-        margin: 0 10px 10px 0;
-      }
-      .link img {
-        display: block;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-      }
-    </style>
+    <link href="style.css" rel="stylesheet" />
+    <script src="background.js" defer></script>
+    <script src="time.js" defer></script>
+    <script src="links.js" defer></script>
   </head>
   <body>
     <div id="background" class="fullscreen"></div>
     <div id="background_opacity" class="fullscreen"></div>
     <div id="time" class="fullscreen"></div>
     <div id="links"></div>
-    <script>
-      // Background Image
-      fetch("https://source.unsplash.com/random?nature")
-        .then(response => response.blob())
-        .then(images => {
-          const img = URL.createObjectURL(images);
-          const el = document.getElementById("background");
-          el.style.backgroundImage = `url("${img}")`;
-          el.style.opacity = 1;
-        });
-    </script>
-    <script>
-      // Time Display
-      const displayTime = () =>
-        (document.getElementById(
-          "time"
-        ).innerHTML = new Date().toLocaleTimeString("en-US", {
-          timeZone: "America/Los_Angeles",
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "2-digit",
-          hour: "numeric",
-          minute: "2-digit",
-          timeZoneName: "short"
-        }));
-      setInterval(() => displayTime(), 10 * 1000);
-      displayTime();
-    </script>
-    <script>
-      // Links Display
-      let links = JSON.parse(localStorage.getItem("links"));
-      if (!links) {
-        links = ["https://example.com"];
-        localStorage.setItem("links", JSON.stringify(links));
-      }
-      const linksEl = document.getElementById("links");
-      links.forEach(link => {
-        const img_src = new URL("https://www.google.com/s2/favicons");
-        img_src.search = `domain=${new URL(link).host}`;
-
-        const img = document.createElement("img");
-        img.src = img_src.href;
-
-        const a = document.createElement("a");
-        a.classList = "link";
-        a.href = link;
-
-        a.appendChild(img);
-        linksEl.appendChild(a);
-      });
-    </script>
   </body>
 </html>
