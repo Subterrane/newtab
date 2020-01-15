@@ -2,7 +2,8 @@
 
 Custom browser "new tab" page
 
-Fetches a random nature photo from [Unsplash](https://unsplash.com/images/nature)
+- Fetches a random nature photo from [Unsplash](https://unsplash.com/images/nature)
+- Link favicons are grabbed with the Google Favicon Snatcher
 
 ![screenshot](example.png)
 
