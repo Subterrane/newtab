@@ -2,6 +2,8 @@
 
 Custom browser "new tab" page
 
+Fetches a random nature photo from [Unsplash](https://unsplash.com/images/nature)
+
 ![screenshot](example.png)
 
 ## Install
