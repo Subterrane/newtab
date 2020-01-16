@@ -31,7 +31,7 @@ displayLinks();
 document.getElementById("add").addEventListener("click", () => {
   try {
     const links = getLinks();
-    const new_url = prompt("New Link URL");
+    const new_url = prompt("Add Link URL");
     const url = new URL(new_url).href;
     if (url) links.push(url);
     setLinks(links);
@@ -42,9 +42,9 @@ document.getElementById("add").addEventListener("click", () => {
 document.getElementById("remove").addEventListener("click", () => {
   const links = getLinks();
   const list = links.reduce((acc, cur, idx) => {
-    acc += `${idx} - ${cur}\n`;
+    acc += `${idx} → ${cur}\n`;
     return acc;
-  }, "Delete URL:\n");
+  }, "Remove Link (Choose ID):\n");
   const rem_idx = parseInt(prompt(list));
   const new_links = getLinks().reduce((acc, cur, idx) => {
     if (idx !== rem_idx) acc.push(cur);

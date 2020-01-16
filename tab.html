@@ -10,6 +10,7 @@
     <script src="background.js" defer></script>
     <script src="time.js" defer></script>
     <script src="links.js" defer></script>
+    <script src="search.js" defer></script>
     <script src="./terminal/output.js" defer></script>
   </head>
   <body>
@@ -17,6 +18,11 @@
     <div id="background_opacity" class="fullscreen"></div>
     <div id="time" class="fullscreen"></div>
     <div id="time_zone" class="control">⌚︎</div>
+    <div id="search">
+      <form action="http://www.google.com/search" method="get">
+        <input type="text" name="q" alt="search">
+    </form>
+    </div>
     <div class="links">
       <div id="links"></div>
       <div id="add" class="control">+</div>

@@ -26,6 +26,6 @@ setInterval(() => displayTime(), 10 * 1000);
 displayTime();
 
 document.getElementById("time_zone").addEventListener("click", () => {
-  setTimeZone(prompt("New Time Zone", getTimeZone()));
+  setTimeZone(prompt("Change Time Zone", getTimeZone()));
   displayTime();
 });
