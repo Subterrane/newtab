@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Disabled</key>
+	<false/>
+	<key>Label</key>
+	<string>com.subterrane.newtab.terminal</string>
+	<key>Program</key>
+	<string>/Users/willmunslow/src/newtab/terminal/command.sh</string>
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.subterrane.newtab.terminal.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.subterrane.newtab.terminal.out</string>
+	<key>StartInterval</key>
+	<integer>300</integer>
+</dict>
+</plist>

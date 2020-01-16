@@ -13,4 +13,4 @@ Custom browser "new tab" page
 
 ## Install Example - Safari
 
-![Safair setup](safari.png)
+![Safari setup](safari.png)
