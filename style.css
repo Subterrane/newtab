@@ -43,7 +43,7 @@ body {
 .links {
   position: fixed;
   top: 10%;
-  right: 5%;
+  right: 10%;
 }
 .link {
   display: inline-block;
