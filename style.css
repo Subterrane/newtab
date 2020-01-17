@@ -93,6 +93,9 @@ body {
   padding: 1em;
   color: white;
 }
+#terminal:empty {
+  display: none;
+}
 #search {
   position: fixed;
   top: 30%;
