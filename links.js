@@ -1,55 +1,85 @@
-const getLinks = () => JSON.parse(localStorage.getItem("links"));
-const setLinks = links => localStorage.setItem("links", JSON.stringify(links));
-const linksEl = document.getElementById("links");
+const linkContainers = document.getElementsByClassName("links");
 
-const displayLinks = () => {
-  let links = getLinks();
-  if (!links) {
-    links = ["https://github.com/Subterrane/newtab"];
-    setLinks(links);
-  }
+for (let container of linkContainers) {
+  const storageKey = container.getAttribute("id");
+  addButtonHandlers(storageKey, container);
+  displayLinks(storageKey, container);
+}
 
-  linksEl.innerHTML = "";
-  links.forEach(link => {
-    const img_src = new URL("https://www.google.com/s2/favicons");
-    img_src.search = `domain=${new URL(link).host}`;
-
-    const img = document.createElement("img");
-    img.src = img_src.href;
-
-    const a = document.createElement("a");
-    a.classList = "link";
-    a.href = link;
-
-    a.appendChild(img);
-    linksEl.appendChild(a);
+function addButtonHandlers(storageKey, parentElement) {
+  parentElement.querySelector(".add").addEventListener("click", () => {
+    addLink(storageKey, parentElement);
   });
-};
+  parentElement.querySelector(".remove").addEventListener("click", () => {
+    removeLink(storageKey, parentElement);
+  });
+}
 
-displayLinks();
+function displayLinks(storageKey, parentElement) {
+  let links = fetchLinksFromStorage(storageKey);
+  parentElement.firstElementChild.innerHTML = "";
+  links.forEach(link => addLinkToDom(link, parentElement.firstElementChild));
+}
 
-document.getElementById("add").addEventListener("click", () => {
+function addLink(storageKey, parentElement) {
   try {
-    const links = getLinks();
+    const links = fetchLinksFromStorage(storageKey);
     const new_url = prompt("Add Link URL");
-    const url = new URL(new_url).href;
-    if (url) links.push(url);
-    setLinks(links);
-    displayLinks();
-  } catch (_err) {}
-});
+    const url = new URL(new_url);
+    const href = url.href;
+    if (href) links.push(href);
+    setLinks(storageKey, links);
+    displayLinks(storageKey, parentElement);
+  } catch (err) {
+    console.error("Try adding a Fully Qualfied URL (ex: https://example.com)");
+  }
+}
 
-document.getElementById("remove").addEventListener("click", () => {
-  const links = getLinks();
+function removeLink(storageKey, parentElement) {
+  const links = fetchLinksFromStorage(storageKey);
   const list = links.reduce((acc, cur, idx) => {
     acc += `${idx} → ${cur}\n`;
     return acc;
   }, "Remove Link (Choose ID):\n");
   const rem_idx = parseInt(prompt(list));
-  const new_links = getLinks().reduce((acc, cur, idx) => {
-    if (idx !== rem_idx) acc.push(cur);
-    return acc;
-  }, []);
-  setLinks(new_links);
-  displayLinks();
-});
+  const new_links = links.filter((_link, idx) => idx !== rem_idx);
+  setLinks(storageKey, new_links);
+  displayLinks(storageKey, parentElement);
+}
+
+function getLinks(storageKey) {
+  return JSON.parse(localStorage.getItem(storageKey));
+}
+
+function setLinks(storageKey, links) {
+  return localStorage.setItem(storageKey, JSON.stringify(links));
+}
+
+function addLinkToDom(linkUrl, parentElement) {
+  const a = document.createElement("a");
+  a.classList = "link";
+  a.href = linkUrl;
+
+  const img = document.createElement("img");
+  img.src = getFaviconUrl(linkUrl);
+
+  a.appendChild(img);
+  parentElement.appendChild(a);
+}
+
+function getFaviconUrl(linkUrl) {
+  const img_src = new URL("https://www.google.com/s2/favicons");
+  img_src.search = `domain=${new URL(linkUrl).host}`;
+  return img_src.href;
+}
+
+function fetchLinksFromStorage(storageKey) {
+  let links = getLinks(storageKey);
+
+  if (!links) {
+    links = ["https://github.com/Subterrane/newtab"];
+    setLinks(storageKey, links);
+  }
+
+  return links;
+}

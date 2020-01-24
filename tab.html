@@ -20,13 +20,20 @@
     <div id="time_zone" class="control">⌚︎</div>
     <div id="search">
       <form action="http://www.google.com/search" method="get">
-        <input type="text" name="q" alt="search">
-    </form>
+        <input type="text" name="q" alt="search" />
+      </form>
     </div>
-    <div class="links">
-      <div id="links"></div>
-      <div id="add" class="control">+</div>
-      <div id="remove" class="control">-</div>
+    <div style="position: fixed; top: 10%; right: 10%;">
+      <div class="links" id="saved_links">
+        <div></div>
+        <div class="control add">+</div>
+        <div class="control remove">-</div>
+      </div>
+      <div class="links" id="temp_links">
+        <div></div>
+        <div class="control add">+</div>
+        <div class="control remove">-</div>
+      </div>
     </div>
     <pre id="terminal"></pre>
   </body>

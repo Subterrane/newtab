@@ -41,9 +41,9 @@ body {
   font-weight: lighter;
 }
 .links {
-  position: fixed;
-  top: 10%;
-  right: 10%;
+  min-height: 80px;
+  min-width: 60px;
+  margin-bottom: 10px;
 }
 .link {
   display: inline-block;
