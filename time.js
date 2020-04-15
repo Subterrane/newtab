@@ -4,17 +4,13 @@ const setTimeZone = tz => localStorage.setItem("timeZone", tz);
 
 const displayTime = () => {
   try {
-    document.getElementById("time").innerHTML = new Date().toLocaleTimeString(
+    document.getElementById("time").innerHTML = new Date().toLocaleString(
       "en-US",
       {
         timeZone: getTimeZone(),
         weekday: "long",
-        year: "numeric",
         month: "long",
-        day: "2-digit",
-        hour: "numeric",
-        minute: "2-digit",
-        timeZoneName: "short"
+        day: "2-digit"
       }
     );
   } catch (e) {
