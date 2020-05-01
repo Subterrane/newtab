@@ -2,32 +2,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>New Tab</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Gruppo"
-      rel="stylesheet"
-    />
-    <link href="style.css" rel="stylesheet" />
-    <script src="background.js" defer></script>
-    <script src="time.js" defer></script>
-    <script src="links.js" defer></script>
+    <link href="tab.css" rel="stylesheet" />
+    <script src="components/background-image.js"></script>
+    <script src="components/display-time.js"></script>
+    <script src="components/links-widget.js"></script>
   </head>
   <body>
-    <div id="background" class="fullscreen"></div>
-    <div id="background_opacity" class="fullscreen"></div>
-    <div id="time" class="fullscreen"></div>
-    <div id="time_zone" class="control">⌚︎</div>
-    <div style="position: fixed; top: 10%; right: 10%;">
-      <div class="links" id="saved_links">
-        <div></div>
-        <div class="control add">+</div>
-        <div class="control remove">-</div>
-      </div>
-      <div class="links" id="temp_links">
-        <div></div>
-        <div class="control add">+</div>
-        <div class="control remove">-</div>
-      </div>
+    <background-image></background-image>
+    <display-time></display-time>
+    <div class="links">
+      <links-widget key="saved_links"></links-widget>
+      <links-widget key="temp_links"></links-widget>
     </div>
-    <script>document.body.blur();</script>
+    <script>
+      document.body.blur();
+    </script>
   </body>
 </html>
