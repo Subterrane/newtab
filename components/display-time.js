@@ -7,7 +7,7 @@ class DisplayTime extends HTMLElement {
 
     var style = document.createElement("style");
     style.textContent = `.time {
-      width: 300px;
+      width: 225px;
       color: #fff;
       font-size: 4em;
       line-height: 3.5rem;
@@ -46,8 +46,8 @@ function displayTime(elem) {
         weekday: "long",
         month: "long",
         day: "2-digit",
-        year: "numeric",
-        era: "long",
+        //year: "numeric",
+        //era: "long",
         hour: "2-digit",
         minute: "2-digit",
         timeZoneName: "short"
