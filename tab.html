@@ -6,17 +6,17 @@
     <link href="tab.css" rel="stylesheet" />
     <script src="components/background-image.js"></script>
     <script src="components/display-time.js"></script>
+    <script src="components/links-wrapper.js"></script>
     <script src="components/links-widget.js"></script>
+    <script src="components/blur-page.js"></script>
   </head>
   <body>
     <background-image></background-image>
     <display-time></display-time>
-    <div class="links">
+    <links-wrapper>
       <links-widget key="saved_links"></links-widget>
       <links-widget key="temp_links"></links-widget>
-    </div>
-    <script>
-      document.body.blur();
-    </script>
+    </links-wrapper>
+    <blur-page></blur-page>
   </body>
 </html>

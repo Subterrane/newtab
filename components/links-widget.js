@@ -1,25 +1,27 @@
-class LinksWidget extends HTMLElement {
-  constructor() {
-    super();
+customElements.define(
+  "links-widget",
+  class extends HTMLElement {
+    constructor() {
+      super();
 
-    const widget_wrapper = document.createElement("div");
-    widget_wrapper.classList.add("links");
+      const widget_wrapper = document.createElement("div");
+      widget_wrapper.classList.add("links");
 
-    const links_wrapper = document.createElement("div");
-    links_wrapper.classList.add("links_wrapper");
+      const links_wrapper = document.createElement("div");
+      links_wrapper.classList.add("links_wrapper");
 
-    const add = document.createElement("div");
-    add.classList.add("control");
-    add.classList.add("add");
-    add.innerHTML = "+";
+      const add = document.createElement("div");
+      add.classList.add("control");
+      add.classList.add("add");
+      add.innerHTML = "+";
 
-    const remove = document.createElement("div");
-    remove.classList.add("control");
-    remove.classList.add("remove");
-    remove.innerHTML = "-";
+      const remove = document.createElement("div");
+      remove.classList.add("control");
+      remove.classList.add("remove");
+      remove.innerHTML = "-";
 
-    var style = document.createElement("style");
-    style.textContent = `.links {
+      var style = document.createElement("style");
+      style.textContent = `.links {
       min-width: 60px;
       margin-bottom: 10px;
     }
@@ -67,24 +69,23 @@ class LinksWidget extends HTMLElement {
       margin-right: 3px;
     }`;
 
-    const shadow = this.attachShadow({ mode: "open" });
-    shadow.appendChild(style);
-    shadow.appendChild(widget_wrapper);
+      const shadow = this.attachShadow({ mode: "open" });
+      shadow.appendChild(style);
+      shadow.appendChild(widget_wrapper);
 
-    widget_wrapper.appendChild(links_wrapper);
-    widget_wrapper.appendChild(add);
-    widget_wrapper.appendChild(remove);
+      widget_wrapper.appendChild(links_wrapper);
+      widget_wrapper.appendChild(add);
+      widget_wrapper.appendChild(remove);
 
-    add.addEventListener("click", () => addLink(this));
-    remove.addEventListener("click", () => removeLink(this));
+      add.addEventListener("click", () => addLink(this));
+      remove.addEventListener("click", () => removeLink(this));
+    }
+
+    connectedCallback() {
+      displayLinks(this);
+    }
   }
-
-  connectedCallback() {
-    displayLinks(this);
-  }
-}
-
-customElements.define("links-widget", LinksWidget);
+);
 
 function displayLinks(elem) {
   const shadow = elem.shadowRoot;

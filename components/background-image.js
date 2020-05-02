@@ -1,21 +1,23 @@
-class BackgroundImage extends HTMLElement {
-  constructor() {
-    super();
+customElements.define(
+  "background-image",
+  class extends HTMLElement {
+    constructor() {
+      super();
 
-    const background = document.createElement("div");
-    background.classList.add("fullscreen");
-    background.classList.add("background");
+      const background = document.createElement("div");
+      background.classList.add("fullscreen");
+      background.classList.add("background");
 
-    const background_image = document.createElement("div");
-    background_image.classList.add("fullscreen");
-    background_image.classList.add("background_image");
+      const background_image = document.createElement("div");
+      background_image.classList.add("fullscreen");
+      background_image.classList.add("background_image");
 
-    const background_opacity = document.createElement("div");
-    background_opacity.classList.add("fullscreen");
-    background_opacity.classList.add("background_opacity");
+      const background_opacity = document.createElement("div");
+      background_opacity.classList.add("fullscreen");
+      background_opacity.classList.add("background_opacity");
 
-    var style = document.createElement("style");
-    style.textContent = `.fullscreen {
+      var style = document.createElement("style");
+      style.textContent = `.fullscreen {
       position: fixed;
       top: 0;
       right: 0;
@@ -42,19 +44,18 @@ class BackgroundImage extends HTMLElement {
       z-index: -1;
     }`;
 
-    const shadow = this.attachShadow({ mode: "open" });
-    shadow.appendChild(style);
-    shadow.appendChild(background);
-    shadow.appendChild(background_image);
-    shadow.appendChild(background_opacity);
-  }
+      const shadow = this.attachShadow({ mode: "open" });
+      shadow.appendChild(style);
+      shadow.appendChild(background);
+      shadow.appendChild(background_image);
+      shadow.appendChild(background_opacity);
+    }
 
-  connectedCallback() {
-    fetchImage(this);
+    connectedCallback() {
+      fetchImage(this);
+    }
   }
-}
-
-customElements.define("background-image", BackgroundImage);
+);
 
 function fetchImage(elem) {
   const shadow = elem.shadowRoot;

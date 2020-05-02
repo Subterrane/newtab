@@ -1,35 +1,36 @@
-class DisplayTime extends HTMLElement {
-  constructor() {
-    super();
+customElements.define(
+  "display-time",
+  class extends HTMLElement {
+    constructor() {
+      super();
 
-    const timeEl = document.createElement("div");
-    timeEl.setAttribute("class", "time");
+      const timeEl = document.createElement("div");
+      timeEl.setAttribute("class", "time");
 
-    var style = document.createElement("style");
-    style.textContent = `.time {
+      var style = document.createElement("style");
+      style.textContent = `.time {
       width: 225px;
       color: #fff;
       font-size: 4em;
       line-height: 3.5rem;
     };`;
 
-    const shadow = this.attachShadow({ mode: "open" });
-    shadow.appendChild(style);
-    shadow.appendChild(timeEl);
+      const shadow = this.attachShadow({ mode: "open" });
+      shadow.appendChild(style);
+      shadow.appendChild(timeEl);
 
-    timeEl.addEventListener("click", () => {
-      setTimeZone(prompt("Change Time Zone", getTimeZone() || defaultTZ));
+      this.addEventListener("click", () => {
+        setTimeZone(prompt("Change Time Zone", getTimeZone() || defaultTZ));
+        displayTime(this);
+      });
+    }
+
+    connectedCallback() {
+      setInterval(() => displayTime(this), 10 * 1000);
       displayTime(this);
-    });
+    }
   }
-
-  connectedCallback() {
-    setInterval(() => displayTime(this), 10 * 1000);
-    displayTime(this);
-  }
-}
-
-customElements.define("display-time", DisplayTime);
+);
 
 const defaultTZ = "America/Los_Angeles";
 const getTimeZone = () => localStorage.getItem("timeZone") || defaultTZ;
