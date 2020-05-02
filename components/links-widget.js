@@ -20,9 +20,11 @@ class LinksWidget extends HTMLElement {
 
     var style = document.createElement("style");
     style.textContent = `.links {
-      min-height: 80px;
       min-width: 60px;
       margin-bottom: 10px;
+    }
+    .links_wrapper {
+      min-height: 60px;
     }
     .link {
       display: inline-block;
@@ -129,7 +131,7 @@ function getFaviconUrl(linkUrl) {
 function fetchLinksFromStorage(storageKey) {
   let links = getLinks(storageKey);
 
-  if (!links || links.length === 0) {
+  if (!links) {
     links = ["https://github.com/Subterrane/newtab"];
     setLinks(storageKey, links);
   }
