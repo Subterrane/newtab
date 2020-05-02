@@ -5,7 +5,7 @@ Custom browser "new tab" page
 - Fetches a random nature photo from [Unsplash](https://unsplash.com/images/nature)
 - Link favicons are grabbed with the Google Favicon Snatcher
 
-![screenshot](example.png)
+![screenshot](images/example.png)
 
 ## Install
 
@@ -13,4 +13,4 @@ Custom browser "new tab" page
 
 ## Install Example - Safari
 
-![Safari setup](safari.png)
+![Safari setup](images/safari.png)
