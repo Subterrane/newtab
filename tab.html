@@ -2,12 +2,27 @@
   <head>
     <meta charset="UTF-8" />
     <title>New Tab</title>
-    <link href="tab.css" rel="stylesheet" />
     <script src="components/background-image.js"></script>
     <script src="components/display-time.js"></script>
     <script src="components/links-wrapper.js"></script>
     <script src="components/links-widget.js"></script>
     <script src="components/blur-page.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+      body {
+        font-family: Gruppo, sans-serif;
+      }
+      display-time {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+      }
+      links-wrapper {
+        position: absolute;
+        top: 10%;
+        right: 10%;
+      }
+    </style>
   </head>
   <body>
     <background-image></background-image>
